@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :find_event, :only => [ :show, :edit, :update, :destroy ]
 
   def latest
-    @events = Event.order("id DESC").limit(3)
+    @events = Event.order("id").limit(5)
   end
 
   def bulk_delete
