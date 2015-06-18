@@ -1,0 +1,10 @@
+<h1><%= @event.name %></h1>
+<% if @event.location %>
+  <%= @event.location.try(:name) %>
+  <%= link_to 'edit', edit_event_location_path(@event) %>
+  <%= link_to 'delete', event_location_path(@event), :method => :delete, :data => { :confirm => "Are you sure to delete location info?" } %>
+<% else %>
+  <p>N/A</p>
+  <p><%= link_to 'add location info', new_event_location_path %></p>
+<% end %>
+<%= link_to 'back to events', events_path %>

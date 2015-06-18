@@ -1,0 +1,13 @@
+<%= @event.name %>
+<%= simple_format(@event.description) %>
+<p>Category: <%= @event.category.try(:name) %></p>
+<p>
+  <%#= link_to 'Back to index', :controller => 'events', :action => 'index' %>
+  <%= link_to 'Back to index', events_path %>
+</p>
+
+<p>Groups:
+  <% @event.groups.each do |g| %>
+    <%= g.name + ", " %>
+  <% end %>
+</p>

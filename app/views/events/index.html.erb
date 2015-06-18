@@ -1,0 +1,23 @@
+<%= link_to 'latest events', latest_events_path %>
+
+<ul>
+  <% @events.each do |e| %>
+    <li>
+      <%= link_to e.name, event_path(e) %>
+      <%= link_to ' (XML)', event_path(e, :format => :xml) %>
+      <%= link_to ' (JSON)', event_path(e, :format => :json) %>
+      <%= link_to 'Edit', edit_event_path(e) %>
+      <%= link_to 'Delete', event_path(e), :method => :delete, :data => { :confirm => "Are you sure?" } %>
+      <%= link_to 'attendees', event_attendees_path(e) %>
+      <%= link_to 'location', event_location_path(e) %>
+      <%#= link_to 'Show', :controller => 'events', :action => 'show', :id => e %>
+      <%#= link_to 'Edit', :controller => 'events', :action => 'edit', :id => e %>
+      <%#= link_to 'Delete', :controller => 'events', :action => 'destroy', :id => e, :confirm => 'Are you sure?' %>
+    </li>
+  <% end %>
+</ul>
+
+<%#= link_to 'New Event', :controller => 'events', :action => 'new' %>
+<%= link_to 'New Event', new_event_path %>
+<%= link_to 'Atom feed', events_path(:format => :atom) %>
+<%= paginate @events %>
