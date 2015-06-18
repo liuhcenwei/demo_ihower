@@ -4,6 +4,9 @@
   <%= text_field_tag "keyword" %>
   <%= submit_tag "Search" %>
 <% end %>
+
+<%= link_to 'Sort by Name', events_path(:order => 'name') %>
+<%= link_to 'Sort by Default', events_path %>
 <%#= form_tag "hot", latest_events_path do |f| %>
   <%#= f.label :number, "number:" %>
   <%#= f.text_field :number %>
