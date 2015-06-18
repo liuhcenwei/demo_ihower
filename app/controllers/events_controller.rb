@@ -2,6 +2,15 @@ class EventsController < ApplicationController
 
   before_action :find_event, :only => [ :show, :edit, :update, :destroy, :dashboard ]
 
+  #def join
+  #  @event = Event.find(params[:id])
+  #  Membership.find_or_create_by(:event => @event, :user => current_user)
+  #  redirect_to :back
+  #end
+
+  def withdraw
+  end
+
   def dashboard
   end
 
@@ -30,7 +39,14 @@ class EventsController < ApplicationController
 
   def index
     #@events = Event.all
-    @events = Event.page(params[:page]).per(5)
+
+    if params[:keyword]
+      @events = Event.where(["name like ?", "%#{params[:keyword]}%"])
+    else
+      @events = Event.all
+    end
+
+    @events = @events.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
