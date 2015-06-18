@@ -40,6 +40,9 @@ class EventsController < ApplicationController
   def index
     #@events = Event.all
 
+    sort_by = (params[:order] == 'name') ? 'name' : 'created_at'
+    @events = Event.order(sort_by).page(params[:page]).per(5)
+    
     if params[:keyword]
       @events = Event.where(["name like ?", "%#{params[:keyword]}%"])
     else
@@ -47,9 +50,6 @@ class EventsController < ApplicationController
     end
 
     @events = @events.page(params[:page]).per(5)
-
-    sort_by = (params[:order] == 'name') ? 'name' : 'created_at'
-    @events = Event.order(sort_by).page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
