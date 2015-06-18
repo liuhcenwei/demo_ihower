@@ -8,6 +8,7 @@
 <ul>
   <% @events.each do |e| %>
     <li>
+      <%= link_to 'dashboard', dashboard_event_path(e) %>
       <%= link_to e.name, event_path(e) %>
       <%= link_to ' (XML)', event_path(e, :format => :xml) %>
       <%= link_to ' (JSON)', event_path(e, :format => :json) %>

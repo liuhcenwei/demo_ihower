@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       get :latest
     end
 
+    member do
+      get :dashboard
+    end
+    
   end
 
   resources :people
