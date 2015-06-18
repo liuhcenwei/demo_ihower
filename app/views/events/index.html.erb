@@ -1,4 +1,8 @@
-<%= link_to 'latest events', latest_events_path(:number => 2) %>
+<%#= link_to 'latest events', latest_events_path(:number => 2) %>
+<%= form_tag latest_events_path, :method => :get do  %>
+  <%= text_field_tag :number %>
+  <%= submit_tag "go latest" %>
+<% end %>
 
 <%= form_tag events_path, :method => :get do %>
   <%= text_field_tag "keyword" %>
@@ -7,10 +11,6 @@
 
 <%= link_to 'Sort by Name', events_path(:order => 'name') %>
 <%= link_to 'Sort by Default', events_path %>
-<%#= form_tag "hot", latest_events_path do |f| %>
-  <%#= f.label :number, "number:" %>
-  <%#= f.text_field :number %>
-<%# end %>
 
 <ul>
   <% @events.each do |e| %>
