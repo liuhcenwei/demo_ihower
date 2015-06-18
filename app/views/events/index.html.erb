@@ -1,4 +1,9 @@
-<%= link_to 'latest events', latest_events_path %>
+<%= link_to 'latest events', latest_events_path(:number => 2) %>
+
+<%#= form_tag "hot", latest_events_path do |f| %>
+  <%#= f.label :number, "number:" %>
+  <%#= f.text_field :number %>
+<%# end %>
 
 <ul>
   <% @events.each do |e| %>
