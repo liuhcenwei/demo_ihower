@@ -1,6 +1,5 @@
 <%= link_to 'latest events', latest_events_path %>
 
-
 <ul>
   <% @events.each do |e| %>
     <li>
@@ -21,4 +20,18 @@
 <%#= link_to 'New Event', :controller => 'events', :action => 'new' %>
 <%= link_to 'New Event', new_event_path %>
 <%= link_to 'Atom feed', events_path(:format => :atom) %>
+<%#= button_to 'delete all', bulk_delete_events_path, :method => :post %>
+
+<%= form_tag bulk_update_events_path do %>
+  <ul>
+    <% @events.each do |e| %>
+      <li>
+        <%= check_box_tag "ids[]", e.id, false %>
+        <%= e.name %>
+      </li>
+    <% end %>
+  </ul>
+  <%= submit_tag "Delete" %>
+  <%= submit_tag "Publish" %>
+<% end %>
 <%= paginate @events %>

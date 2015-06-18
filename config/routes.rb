@@ -2,6 +2,18 @@ Rails.application.routes.draw do
 
   resources :events do
     collection do
+      post :bulk_update
+    end
+  end
+
+  resources :events do
+    collection do
+      post :bulk_delete
+    end
+  end
+
+  resources :events do
+    collection do
       get :latest
     end
   end
