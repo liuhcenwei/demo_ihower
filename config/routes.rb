@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :events do
 
+    #resources :memberships
     resources :attendees, :controller => 'event_attendees'
     resource :location, :controller => 'event_locations'
 
