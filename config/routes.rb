@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :events do
 
-    #resources :memberships
+    resources :memberships
     resources :attendees, :controller => 'event_attendees'
     resource :location, :controller => 'event_locations'
 
@@ -15,11 +15,8 @@ Rails.application.routes.draw do
 
     member do
       get :dashboard
-    end
-
-    member do
       post :join
-      post :withdraw
+      post :withdraw  
     end
 
   end

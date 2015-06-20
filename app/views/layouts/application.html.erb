@@ -12,6 +12,8 @@
 <p style="color: red"><%= flash[:alert] %></p>
 
 <% if current_user %>
+  hello~ 
+  <%= current_user.try(:username) %><br />
   <%= link_to 'log out', destroy_user_session_path, :method => :delete %>
   <%= link_to 'modify password', edit_registration_path(:user) %>
 <% else %>

@@ -9,5 +9,8 @@ class Event < ActiveRecord::Base
   has_many :event_groupships
   has_many :groups, :through => :event_groupships
   
+  has_many :memberships
+  has_many :users, :through => :memberships
+
   belongs_to :category
 end

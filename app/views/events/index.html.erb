@@ -23,8 +23,8 @@
       <%= link_to 'Delete', event_path(e), :method => :delete, :data => { :confirm => "Are you sure?" } %>
       <%= link_to 'attendees', event_attendees_path(e) %>
       <%= link_to 'location', event_location_path(e) %>
-      <%= link_to 'Join', join_event_path(e) %>
-      <%= link_to 'Withdraw', withdraw_event_path(e) %>
+      <%= link_to 'Join', join_event_path(e), :method => :post %>
+      <%= link_to 'Withdraw', withdraw_event_path(e), :method => :post %>
       <%#= link_to 'Show', :controller => 'events', :action => 'show', :id => e %>
       <%#= link_to 'Edit', :controller => 'events', :action => 'edit', :id => e %>
       <%#= link_to 'Delete', :controller => 'events', :action => 'destroy', :id => e, :confirm => 'Are you sure?' %>

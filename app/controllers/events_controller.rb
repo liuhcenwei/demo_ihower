@@ -4,16 +4,16 @@ class EventsController < ApplicationController
   before_action :find_event, :only => [ :show, :edit, :update, :destroy, :dashboard ]
 
   def join
-    #@event = Event.find(params[:id])
-    #Membership.find_or_create_by(:event => @event, :user => current_user)
-    #redirect_to :back
+    @event = Event.find(params[:id])
+    Membership.find_or_create_by(:event => @event, :user => current_user)
+    redirect_to :back
   end
 
   def withdraw
-    #@event = Event.find(params[:id])
-    #@membership = Membership.find_by(:event => @event, :user => current_user)
-    #@membership.destroy
-    #redirect_to :back
+    @event = Event.find(params[:id])
+    @membership = Membership.find_by(:event => @event, :user => current_user)
+    @membership.destroy
+    redirect_to :back
   end
 
   def dashboard
