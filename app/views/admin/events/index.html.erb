@@ -1,12 +1,14 @@
-<p>admin page</p>
+<h1>Admin page</h1>
 
+<%= link_to 'New Event', new_admin_event_path %>
 <div>
-  <%= form_tag bulk_update_events_path do %>
+  <%= form_tag bulk_update_admin_events_path do %>
     <ul>
       <% @events.each do |e| %>
         <li>
           <%= check_box_tag "ids[]", e.id, false %>
           <%= e.name %>
+          <%= link_to 'edit', edit_admin_event_path(e) %>
         </li>
       <% end %>
     </ul>

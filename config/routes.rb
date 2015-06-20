@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :events
+    resources :events do
+      collection do
+        post :bulk_update
+      end
+    end
   end
   
   devise_for :users

@@ -9,6 +9,11 @@
 </p>
 
 <p>
+  Location:
+  <%= @event.location.try(:name) %>
+</p>
+
+<p>
   Category:
   <%= @event.category.try(:name) %>
 </p>

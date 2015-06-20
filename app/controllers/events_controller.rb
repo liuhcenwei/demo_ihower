@@ -97,7 +97,8 @@ class EventsController < ApplicationController
   def update
     if @event.update(event_params)
       flash[:notice] = "event was successfully updated"
-      redirect_to :action => :show, :id => @event
+      redirect_to event_path(@event)
+      #redirect_to :action => :show, :id => @event
     else
       render :edit
     end
@@ -117,7 +118,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :category_id, :location_attributes => [:id, :name, :_destroy], :group_ids => [])
+    params.require(:event).permit(:capacity, :name, :description, :category_id, :location_attributes => [:id, :name, :_destroy], :group_ids => [])
   end
 
 end

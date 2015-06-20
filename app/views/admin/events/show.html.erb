@@ -1,0 +1,47 @@
+<h1>Admin Page</h1>
+<p>
+  Name:
+  <%= @event.name %>
+</p>
+
+<p>
+  Description:
+  <%= @event.try(:description) %>
+</p>
+
+<p>
+  Location:
+  <%= @event.location.try(:name) %>
+</p>
+
+<p>
+  Category:
+  <%= @event.category.try(:name) %>
+</p>
+
+<p>
+  Status:
+  <%= @event.try(:status) %>
+</p>
+
+<p>Groups:
+  <ul>
+  <% @event.groups.each do |g| %>
+    <li>
+      <%= g.name %>
+    </li>
+  <% end %>
+  </ul>
+</p>
+
+<p>
+  Capacity:
+  <%= @event.capacity %>
+</p>
+
+<p>
+  <%= link_to 'Back to admin index', admin_events_path %>
+  <%= link_to 'edit', edit_event_path(@event) %>
+  <%= link_to 'delete', event_path(@event), :method => :delete, :data => { :confirm => "Are you sure?" } %> 
+  <%#= link_to 'Back to index', :controller => 'events', :action => 'index' %>
+</p>
