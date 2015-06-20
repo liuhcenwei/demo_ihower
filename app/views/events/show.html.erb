@@ -1,13 +1,36 @@
-<%= @event.name %>
-<%= simple_format(@event.description) %>
-<p>Category: <%= @event.category.try(:name) %></p>
 <p>
-  <%#= link_to 'Back to index', :controller => 'events', :action => 'index' %>
-  <%= link_to 'Back to index', events_path %>
+  Name:
+  <%= @event.name %>
+</p>
+
+<p>
+  Description:
+  <%= @event.try(:description) %>
+</p>
+
+<p>
+  Category:
+  <%= @event.category.try(:name) %>
+</p>
+
+<p>
+  Status:
+  <%= @event.try(:status) %>
 </p>
 
 <p>Groups:
+  <ul>
   <% @event.groups.each do |g| %>
-    <%= g.name + ", " %>
+    <li>
+      <%= g.name %>
+    </li>
   <% end %>
+  </ul>
+</p>
+
+<p>
+  <%= link_to 'Back to index', events_path %>
+  <%= link_to 'edit', edit_event_path(@event) %>
+  <%= link_to 'delete', event_path(@event), :method => :delete, :data => { :confirm => "Are you sure?" } %> 
+  <%#= link_to 'Back to index', :controller => 'events', :action => 'index' %>
 </p>

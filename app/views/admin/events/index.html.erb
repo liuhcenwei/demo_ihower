@@ -1,0 +1,16 @@
+<p>admin page</p>
+
+<div>
+  <%= form_tag bulk_update_events_path do %>
+    <ul>
+      <% @events.each do |e| %>
+        <li>
+          <%= check_box_tag "ids[]", e.id, false %>
+          <%= e.name %>
+        </li>
+      <% end %>
+    </ul>
+    <%= submit_tag "Delete" %>
+    <%= submit_tag "Publish" %>
+  <% end %>
+</div>

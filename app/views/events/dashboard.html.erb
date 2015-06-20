@@ -1,1 +1,19 @@
-<%= @event.name%>
+<h1>
+  <%= @event.name %>
+</h1>
+
+<p>
+  Capacity:
+  <% if @event.capacity %>
+    <%= @event.capacity %><br />
+    <% @event.capacity.times do %>
+    *
+    <% end %>
+  <% else %>
+    no capacity info
+  <% end %>
+</p>
+
+<p>
+  <%= link_to 'back to events', events_path %>
+</p>
