@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= @page_title || "Event Application" %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= @page_title || "Event Application" %></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<p style="color: green"><%= flash[:notice] %></p>
-<p style="color: red"><%= flash[:alert] %></p>
+  <body>
 
-<div>
-  <% if current_user %>
-    hello~ 
-    <%= current_user.try(:username) %><br />
-    <%= link_to 'log out', destroy_user_session_path, :method => :delete %>
-    <%= link_to 'modify password', edit_registration_path(:user) %>
-  <% else %>
-    <%= link_to 'sign up', new_registration_path(:user) %>
-    <%= link_to 'sign in', new_session_path(:user) %>
-  <% end %>
-</div>
+    <p style="color: green"><%= flash[:notice] %></p>
+    <p style="color: red"><%= flash[:alert] %></p>
 
-<%= yield %>
+    <div class="container">
+      <% if current_user %>
+        hello~ 
+        <%= current_user.try(:username) %><br />
+        <%= link_to 'log out', destroy_user_session_path, :method => :delete %>
+        <%= link_to 'modify password', edit_registration_path(:user) %>
+      <% else %>
+        <%= link_to 'sign up', new_registration_path(:user) %>
+        <%= link_to 'sign in', new_session_path(:user) %>
+      <% end %>
+    </div>
 
-</body>
+    <div class="container">
+      <%#= link_to 'events i join', %>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+  
 </html>

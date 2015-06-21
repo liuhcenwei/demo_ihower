@@ -10,8 +10,8 @@
 
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:alert] %></p>
-
-<div>
+<%= link_to 'sign out as admin', destroy_admin_session_path, :method => :delete %>
+<div class="container">
   <% if current_user %>
     hello~ 
     <%= current_user.try(:username) %><br />
@@ -23,7 +23,9 @@
   <% end %>
 </div>
 
-<%= yield %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

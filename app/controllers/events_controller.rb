@@ -44,14 +44,15 @@ class EventsController < ApplicationController
 
   def index
     #@events = Event.all
-
+    @events = Event.where(:status => "published").order(created_at: :desc)
+    
     sort_by = (params[:order] == 'name') ? 'name' : 'created_at'
-    @events = Event.order(sort_by).page(params[:page]).per(5)
+    @events = @events.order(sort_by).page(params[:page]).per(5)
     
     if params[:keyword]
       @events = Event.where(["name like ?", "%#{params[:keyword]}%"])
-    else
-      @events = Event.all
+    #else
+    #  @events = Event.all
     end
 
     @events = @events.page(params[:page]).per(5)

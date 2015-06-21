@@ -1,37 +1,53 @@
-<p>
-  Name:
-  <%= @event.name %>
-</p>
+<div class="container">
+  <p>
+    Name:
+    <%= @event.name %>
+  </p>
 
-<p>
-  Description:
-  <%= @event.try(:description) %>
-</p>
+  <p>
+    Description:
+    <%= @event.try(:description) %>
+  </p>
 
-<p>
-  Location:
-  <%= @event.location.try(:name) %>
-</p>
+  <p>
+    Location:
+    <%= @event.location.try(:name) %>
+  </p>
 
-<p>
-  Category:
-  <%= @event.category.try(:name) %>
-</p>
+  <p>
+    Category:
+    <%= @event.category.try(:name) %>
+  </p>
 
-<p>
-  Status:
-  <%= @event.try(:status) %>
-</p>
+  <p>
+    Status:
+    <%= @event.try(:status) %>
+  </p>
 
-<p>Groups:
-  <ul>
-  <% @event.groups.each do |g| %>
-    <li>
-      <%= g.name %>
-    </li>
-  <% end %>
-  </ul>
-</p>
+  <p>
+    Groups:
+    <ul>
+    <% @event.groups.each do |g| %>
+      <li>
+        <%= g.name %>
+      </li>
+    <% end %>
+    </ul>
+  </p>
+
+  <p>
+    <%= link_to 'Attendees:', event_attendees_path(@event) %>
+    <ul>
+      <% if @event.attendees %>
+        <% @event.attendees.each do |atd| %>
+          <li>
+            <%= atd.name %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </p>
+</div>
 
 <p>
   <%= link_to 'Back to index', events_path %>

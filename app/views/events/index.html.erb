@@ -37,16 +37,18 @@
 <%= link_to 'Atom feed', events_path(:format => :atom) %>
 <%#= button_to 'delete all', bulk_delete_events_path, :method => :post %>
 
-<%= form_tag bulk_update_events_path do %>
+<!--
+<%#= form_tag bulk_update_events_path do %>
   <ul>
-    <% @events.each do |e| %>
+    <%# @events.each do |e| %>
       <li>
-        <%= check_box_tag "ids[]", e.id, false %>
-        <%= e.name %>
+        <%#= check_box_tag "ids[]", e.id, false %>
+        <%#= e.name %>
       </li>
-    <% end %>
+    <%# end %>
   </ul>
   <%#= submit_tag "Delete" %>
-  <%= submit_tag "Publish" %>
-<% end %>
+  <%#= submit_tag "Publish" %>
+<%# end %>
+-->
 <%= paginate @events %>

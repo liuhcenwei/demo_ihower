@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
+  devise_for :users
+  
   namespace :admin do
     resources :events do
       collection do
@@ -8,7 +11,6 @@ Rails.application.routes.draw do
     end
   end
   
-  devise_for :users
   resources :events do
 
     resources :memberships

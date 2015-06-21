@@ -1,6 +1,7 @@
 class Admin::EventsController < ApplicationController
   
   before_action :authenticate
+  before_action :find_event, :only => [ :show, :edit, :update ]
   layout "admin"
 
   def bulk_update
@@ -17,11 +18,10 @@ class Admin::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.all.order(created_at: :desc)
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def new
@@ -39,11 +39,9 @@ class Admin::EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
     if @event.update(event_params)
       redirect_to admin_event_path(@event)
     else
@@ -55,6 +53,10 @@ class Admin::EventsController < ApplicationController
   end
 
   protected
+
+  def find_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:capacity, :name, :description, :category_id, :location_attributes => [:id, :name, :_destroy], :group_ids => [])
